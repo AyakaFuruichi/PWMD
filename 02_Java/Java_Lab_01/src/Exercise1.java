@@ -9,5 +9,7 @@ public class Exercise1 {
         num = input.nextInt();
 
         System.out.printf("The radius is: %d, The area is: %.15f", num, (num*num*Math.PI));
+
+        input.close();
     }
 }

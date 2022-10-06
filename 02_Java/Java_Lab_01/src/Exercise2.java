@@ -9,5 +9,7 @@ public class Exercise2 {
         num = input.nextInt();
 
         System.out.printf("The value is %d dollars and %d cents.", (num/100), (num%100));
+
+        input.close(); //add:221006
     }
 }

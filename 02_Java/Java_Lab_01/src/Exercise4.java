@@ -1,5 +1,3 @@
-import javax.sound.sampled.SourceDataLine;
-
 public class Exercise4 {
     public static void main(String[] args) {
         char j = 'J';
