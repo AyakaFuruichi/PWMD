@@ -19,8 +19,7 @@ public class Lab5Q2 {
         System.out.println("-----------------------------------------------");
 
         intList2.addAll(intList1);
-        num = intList1.get(9);
-        intList1.set(9, num-5);
+        intList1.set(9, -5);
 
         System.out.println("[After]");
         System.out.println("List1: " + intList1 + "\nList2: " + intList2);
