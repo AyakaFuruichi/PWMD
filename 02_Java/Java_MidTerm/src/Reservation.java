@@ -8,6 +8,12 @@ public class Reservation {
     Tickets flight = new Tickets();
     Tool tool = new Tool();
 
+    /*
+     * Cancel Reservation method
+     * ------------------------------------
+     * cancel a reservation from list
+     */
+
     void cancelReservation(){
 
         String conNum2;
@@ -32,10 +38,10 @@ public class Reservation {
                     System.out.println(
                     "------------------------------------"+"\n"+
                     "Confirmation Number: ["+ list.get(i).getConNumber()+ "]\n"+
-                    "Your Name:\t" + list.get(i).getFirstName()+ " "+ flight.getLastName()+"\n"+
+                    "Your Name:\t" + list.get(i).getFirstName()+ " "+ list.get(i).getLastName()+"\n"+
                     "Flight Date:\t"+ list.get(i).getDate()+"\n"+
-                    "Departure:\t"+ list.get(i).getDeparture()+"\n"+
-                    "Destination:\t"+list.get(i).getDestination()+"\n"+
+                    "Departure:\t"+ list.get(i).getDeparture().toUpperCase()+"\n"+
+                    "Destination:\t"+list.get(i).getDestination().toUpperCase()+"\n"+
                     "Price:\t"+ "$"+list.get(i).getPrice()+"\n"+
                     "------------------------------------\n"+
                     "Do you really cancel it? [y/n]"
@@ -64,13 +70,19 @@ public class Reservation {
                 }
 
             }else{
-                System.out.println("Invalid option, return to menu screen.");
+                System.out.println("Invalid option, return to menu.");
                 return;
             }
 
         }
 
     }
+
+    /*
+     * Change Reservation method
+     * ------------------------------------
+     * change a reservation information from a reservation
+     */
 
     void changeReservation(){
 
@@ -123,7 +135,7 @@ public class Reservation {
                         System.out.printf("Day [DD]: ");
                         while(true){
                             day = scan.nextInt();
-                            if(day <= 0 || day >= 31){
+                            if(day <= 0 || day >= 32){
                                 System.out.println("Invalid number.　Please try again.");
                                 continue;
                             }else{
@@ -166,20 +178,47 @@ public class Reservation {
                         }
 
                         newDate += "/"+ year;
-                        
+
                         String oldDate = list.get(i).getDate();
-                        list.get(i).setDate(newDate);
 
-                        tool.clear();
+                        while(true){
+                            System.out.println(
+                                "------------------------------------\n"+
+                                "[Confirmation]\n"+
+                                "[Before] " + oldDate+ "\n"+
+                                "[After] " + newDate+ "\n"+
+                                "------------------------------------\n"+
+                                "Is it Ok? [y/n]"
+                            );
 
-                        System.out.println(
-                            "Success your process!\n"+
-                            "------------------------------\n"+
-                            "[Before] " + oldDate+ "\n"+
-                            "[After] " + newDate
-                        );
+                            char opt1 = scan.next().charAt(0);
 
-                        return;
+                            if(Character.toLowerCase(opt1) == 'y'){
+
+                                tool.clear();
+
+                                list.get(i).setDate(newDate);
+                                System.out.println(
+                                    "Success your process!\n"+
+                                    "------------------------------\n"+
+                                    "[Before] " + oldDate+ "\n"+
+                                    "[After] " + newDate
+                                );
+                                return;
+
+                            }else if(Character.toLowerCase(opt1) == 'n'){
+
+                                tool.clear();
+                                System.out.println("Canceled process...");
+                                return;
+
+                            }else{
+
+                                System.out.println("Please enter a valid option");
+                                continue;
+
+                            }
+                        }
 
                     case 2:
                         System.out.println(
@@ -198,21 +237,54 @@ public class Reservation {
                             return;
                         }
 
-                        list.get(i).setDeparture(newFrom);
-                        list.get(i).setPrice(newPrice);
+                        while(true){
+                            System.out.println(
+                                "------------------------------------\n"+
+                                "[Before] \n"+
+                                " Departure:\t"+ oldFrom.toUpperCase()+"\n"+
+                                " Price:\t"+ oldPrice+ "\n"+
+                                "[After] \n"+
+                                " Departure:\t"+ newFrom.toUpperCase()+ "\n"+
+                                " Price:\t"+ newPrice+ "\n"+
+                                "------------------------------------\n"+
+                                "Is it Ok? [y/n]"
+                            );
 
-                        System.out.println(
-                            "Success your process!\n"+
-                            "------------------------------\n"+
-                            "[Before] \n"+
-                            " Departure:\t"+ oldFrom.toUpperCase()+"\n"+
-                            " Price:\t"+ oldPrice+ "\n"+
-                            "[After] \n"+
-                            " Departure:\t"+ newFrom.toUpperCase()+ "\n"+
-                            " Price:\t"+ newPrice
-                        );
+                            char opt2 = scan.next().charAt(0);
 
-                        return;
+                            if(Character.toLowerCase(opt2) == 'y'){
+
+                                tool.clear();
+
+                                list.get(i).setDeparture(newFrom);
+                                list.get(i).setPrice(newPrice);
+
+                                System.out.println(
+                                    "Success your process!\n"+
+                                    "------------------------------\n"+
+                                    "[Before] \n"+
+                                    " Departure:\t"+ oldFrom.toUpperCase()+"\n"+
+                                    " Price:\t"+ oldPrice+ "\n"+
+                                    "[After] \n"+
+                                    " Departure:\t"+ newFrom.toUpperCase()+ "\n"+
+                                    " Price:\t"+ newPrice
+                                );
+                                return;
+
+                            }else if(Character.toLowerCase(opt2) == 'n'){
+                                
+                                tool.clear();
+                                System.out.println("Canceled process...");
+                                return;
+
+                            }else{
+
+                                System.out.println("Please enter a valid option");
+                                continue;
+
+                            }
+                        }
+
 
                     case 3:
                         System.out.println(
@@ -222,7 +294,7 @@ public class Reservation {
                         String oldTo = list.get(i).getDestination();
                         int oldPrice2 = list.get(i).getPrice();
                         String newTo = scan.next();
-                        int newPrice2 = getPrice(newTo, list.get(i).getDestination());
+                        int newPrice2 = getPrice(list.get(i).getDeparture(), newTo);
 
                         tool.clear();
 
@@ -231,21 +303,54 @@ public class Reservation {
                             return;
                         }
 
-                        list.get(i).setDestination(newTo);
-                        list.get(i).setPrice(newPrice2);
+                        while(true){
 
-                        System.out.println(
-                            "Success your process!\n"+
-                            "------------------------------\n"+
-                            "[Before] \n"+
-                            " Destination:\t"+ oldTo.toUpperCase()+"\n"+
-                            " Price:\t"+ oldPrice2+ "\n"+
-                            "[After] \n"+
-                            " Destination:\t"+ newTo.toUpperCase()+ "\n"+
-                            " Price:\t"+ newPrice2
-                        );
+                            System.out.println(
+                                "------------------------------------\n"+
+                                "[Before] \n"+
+                                " Destination:\t"+ oldTo.toUpperCase()+"\n"+
+                                " Price:\t"+ oldPrice2+ "\n"+
+                                "[After] \n"+
+                                " Destination:\t"+ newTo.toUpperCase()+ "\n"+
+                                " Price:\t"+ newPrice2+ "\n"+
+                                "------------------------------------\n"+
+                                "Is it Ok? [y/n]"
+                            );
 
-                        return;
+                            char opt3 = scan.next().charAt(0);
+
+                            if(Character.toLowerCase(opt3) == 'y'){
+
+                                tool.clear();
+
+                                list.get(i).setDestination(newTo);
+                                list.get(i).setPrice(newPrice2);
+
+                                System.out.println(
+                                    "Success your process!\n"+
+                                    "------------------------------\n"+
+                                    "[Before] \n"+
+                                    " Destination:\t"+ oldTo.toUpperCase()+"\n"+
+                                    " Price:\t"+ oldPrice2+ "\n"+
+                                    "[After] \n"+
+                                    " Destination:\t"+ newTo.toUpperCase()+ "\n"+
+                                    " Price:\t"+ newPrice2
+                                );
+                                return;
+
+                            }else if(Character.toLowerCase(opt3) == 'n'){
+                                
+                                tool.clear();
+                                System.out.println("Canceled process...");
+                                return;
+
+                            }else{
+
+                                System.out.println("Please enter a valid option");
+                                continue;
+
+                            }
+                        }                    
 
                     case 4:
                         String oldFName, oldLName, newFName, newLName;
@@ -260,19 +365,47 @@ public class Reservation {
                         System.out.printf("Last name: ");
                         newLName = scan.next().toUpperCase();
 
-                        list.get(i).setFirstName(newFName);
-                        list.get(i).setLastName(newLName);
+                        while(true){
 
-                        tool.clear();
+                            System.out.println(
+                                "------------------------------------\n"+
+                                "[Before] \t"+ oldFName+ " "+ oldLName+ "\n"+
+                                "[After] \t"+ newFName+ " "+ newLName+ "\n"+
+                                "------------------------------------\n"+
+                                "Is it Ok? [y/n]"
+                            );
 
-                        System.out.println(
-                            "Success your process!\n"+
-                            "------------------------------\n"+
-                            "[Before] \t"+ oldFName+ " "+ oldLName+ "\n"+
-                            "[After] \t"+ newFName+ " "+ newLName
-                        );
+                            char opt4 = scan.next().charAt(0);
 
-                        return;
+                            if(Character.toLowerCase(opt4) == 'y'){
+
+                                tool.clear();
+
+                                list.get(i).setFirstName(newFName);
+                                list.get(i).setLastName(newLName);
+
+                                System.out.println(
+                                    "Success your process!\n"+
+                                    "------------------------------\n"+
+                                    "[Before] \t"+ oldFName+ " "+ oldLName+ "\n"+
+                                    "[After] \t"+ newFName+ " "+ newLName
+                                );
+
+                                return;
+
+                            }else if(Character.toLowerCase(opt4) == 'n'){
+                                
+                                tool.clear();
+                                System.out.println("Canceled process...");
+                                return;
+
+                            }else{
+
+                                System.out.println("Please enter a valid option");
+                                continue;
+
+                            }
+                        }
                         
 
                     default:
@@ -287,6 +420,12 @@ public class Reservation {
 
         return;
     }
+
+    /*
+     * Get price method
+     * ------------------------------------
+     * Get price from departure and destination
+     */
 
     int getPrice(String from, String to){
         
@@ -396,6 +535,12 @@ public class Reservation {
 
     }
 
+    /*
+     * Set reservation information method
+     * ------------------------------------
+     * Set reservation information to list
+     */
+
     Tickets setList(String conNumber, String firstName, String lastName, String date, int price, String departure, String destination){
         Tickets setInfo = new Tickets();
 
@@ -409,6 +554,12 @@ public class Reservation {
 
         return setInfo;
     }
+
+    /*
+     * Reservation method
+     * ------------------------------------
+     * reserve a new flight information and add list.
+     */
 
     void reserveTickets(){
         
@@ -560,6 +711,12 @@ public class Reservation {
         }
     }
 
+    /*
+     * Check Reservation method
+     * ------------------------------------
+     * check all reservation
+     */
+
     void checkReservation(){
 
         tool.clear();
@@ -582,10 +739,10 @@ public class Reservation {
             System.out.println(
                 "------------------------------------"+"\n"+
                 "Confirmation Number: ["+ list.get(i).conNumber+ "]\n"+
-                "Your Name:\t" + list.get(i).firstName+ " "+ list.get(i).lastName+"\n"+
+                "Your Name:\t" + list.get(i).firstName.toUpperCase()+ " "+ list.get(i).lastName.toUpperCase()+"\n"+
                 "Flight Date:\t"+ list.get(i).date+"\n"+
-                "Departure:\t"+ list.get(i).departure+"\n"+
-                "Destination:\t"+list.get(i).destination+"\n"+
+                "Departure:\t"+ list.get(i).departure.toUpperCase()+"\n"+
+                "Destination:\t"+list.get(i).destination.toUpperCase()+"\n"+
                 "Price:\t"+ "$"+list.get(i).price+"\n"+
                 "------------------------------------"
             );
