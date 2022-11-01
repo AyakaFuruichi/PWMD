@@ -3,20 +3,18 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         //define variables and objects
-        Scanner scan1 = new Scanner(System.in);
-        Scanner scan2 = new Scanner(System.in);
-        Scanner scan3 = new Scanner(System.in);
-        Scanner scan4 = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
+        
         int num1,num2;
         String ope, cont;
         Boolean flag = true;
         Calcurator calc = new Calcurator();
 
-        //Calcuration App
+        //Calculation App
         while(flag == true){
             //type the first number
             System.out.println(">Please type the first number");
-            num1 = scan1.nextInt();
+            num1 = scan.nextInt();
             
             //chose an operation
             System.out.println(">Chose an operation:");
@@ -24,13 +22,13 @@ public class App {
             System.out.println(" >> Type - for substraction");
             System.out.println(" >> Type * for multiplication");
             System.out.println(" >> Type / for division");
-            ope = scan2.nextLine();
+            ope = scan.next();
             
             //Check operation
             if(ope.equals("+") || ope.equals("-") || ope.equals("*") || ope.equals("/")){
                 //type the second number
                 System.out.println(">Please type the second number");
-                num2 = scan3.nextInt();
+                num2 = scan.nextInt();
 
                  //calcuration
                 if(ope.equals("+")){
@@ -54,7 +52,7 @@ public class App {
             //Continue or quite
             while(true){
                 System.out.println(">Do you want to continue or quit");
-                cont = scan4.nextLine();
+                cont = scan.next();
                 if(cont.equals("continue")){
                     flag = true;
                     break;
@@ -69,9 +67,6 @@ public class App {
                 }
             }
         }
-        scan1.close();
-        scan2.close();
-        scan3.close();
-        scan4.close();
+        scan.close();
     }
 }
