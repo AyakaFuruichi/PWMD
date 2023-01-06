@@ -1,0 +1,330 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: "Playfair Display", serif;
+}
+
+h2 {
+  font-size: 15px;
+  color: rgb(255, 136, 0);
+  font-family: "Lato", sans-serif;
+}
+
+h3 {
+  font-size: 40px;
+  font-family: "Playfair Display", serif;
+}
+
+p {
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  color: rgb(13, 13, 37);
+  display: block;
+  line-height: 2em;
+  padding: 30px 0px 30px 0px;
+}
+
+main {
+  height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1)), url(https://images.unsplash.com/photo-1479044769763-c28e05b5baa5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80);
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+header nav {
+  display: flex;
+  padding-top: 25px;
+}
+header ul {
+  display: flex;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+  width: 40%;
+}
+header .fas {
+  margin-right: 35px;
+  font-size: 15px;
+  color: rgb(255, 136, 0);
+}
+header .hamburger {
+  display: none;
+}
+@media screen and (max-width: 1129px) {
+  header .logo {
+    width: 70%;
+  }
+  header ul {
+    display: none;
+  }
+  header .hamburger {
+    display: contents;
+  }
+}
+header li a {
+  text-decoration: none;
+  color: rgb(13, 13, 37);
+  margin-right: 20px;
+}
+
+.welcome {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.welcome form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 400px;
+}
+.welcome form input {
+  padding-left: 10px;
+  height: 40px;
+  width: 55%;
+  min-width: 200px;
+  border: none;
+  margin-right: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0;
+}
+.welcome form input :hover {
+  outline: none;
+}
+.welcome form select {
+  color: #fff;
+  background-color: rgb(255, 136, 0);
+  border-color: rgb(255, 136, 0);
+  appearance: none;
+  height: 40px;
+  padding: 10px 5px 10px 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 5px;
+  margin-left: 0;
+}
+
+.about {
+  margin-top: 50px;
+  height: 80vh;
+  background-image: url("../images/about.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  padding-left: 40%;
+  padding-right: 10%;
+}
+.about h2 {
+  margin-bottom: 20px;
+}
+.about h3 {
+  margin-bottom: 20px;
+}
+.about a {
+  background-color: rgb(255, 136, 0);
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  padding: 10px 0px 10px 10px;
+  border-radius: 5px;
+}
+.about span {
+  background-color: rgb(255, 170, 77);
+  padding: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: 5px;
+}
+
+.order {
+  padding: 50px;
+}
+.order h3 {
+  text-align: center;
+}
+.order .cuisine {
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+}
+.order .cuisine li {
+  padding: 0px 30px 20px 30px;
+  border-bottom: 2px solid rgb(247, 247, 248);
+}
+.order .cuisine li:first-of-type {
+  border-bottom: 2px splid rgb(255, 136, 0);
+}
+.order .cuisine a {
+  text-decoration: none;
+  color: rgb(13, 13, 37);
+}
+.order .firstlink {
+  color: rgb(255, 136, 0);
+}
+
+section {
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  flex-wrap: wrap;
+}
+
+.gallery {
+  padding: 0px 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2%;
+  justify-items: center;
+}
+.gallery section {
+  height: 200px;
+  width: 100%;
+  max-width: 240px;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  opacity: 0; /* マスクを表示しない */
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: all 0.6s ease;
+}
+.gallery-overlay span {
+  color: #fff;
+  padding-top: 80px;
+  padding-left: 0px;
+}
+
+.gallery-overlay:hover span {
+  opacity: 1; /* マスクを表示する */
+  padding-left: 90px; /* 右にずらす */
+}
+
+.img01 {
+  background-image: url("https://source.unsplash.com/fdlZBWIP0aM");
+}
+
+.img02 {
+  background-image: url("https://source.unsplash.com/Zyx6a0ReB18");
+}
+
+.img03 {
+  background-image: url("https://source.unsplash.com/WbA_PCv3_Co");
+}
+
+.img04 {
+  background-image: url("https://source.unsplash.com/SH6vc3VOOwE");
+}
+
+.img05 {
+  background-image: url("https://source.unsplash.com/ohnRXPYXDEE");
+}
+
+.img06 {
+  background-image: url("https://source.unsplash.com/j3gz0KReZbA");
+}
+
+.img07 {
+  background-image: url("https://source.unsplash.com/FFqNATH27EM");
+}
+
+.img08 {
+  background-image: url("https://source.unsplash.com/RwoKbjJdYvE");
+}
+
+.dots {
+  display: block;
+  text-align: center;
+}
+.dots li {
+  color: rgb(255, 136, 0);
+  display: inline-block;
+  width: 15px;
+}
+
+.book {
+  background-image: url("https://source.unsplash.com/ThtzElwvwyM");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: block;
+}
+.book h2 {
+  padding-bottom: 20px;
+}
+.book a {
+  display: block;
+  font-size: 25px;
+  font-family: "Playfair Display", serif;
+  color: rgb(255, 136, 0);
+  padding: 10px 10px 20px 10px;
+  text-decoration: none;
+}
+.book section {
+  display: inline-block;
+  width: 45%;
+}
+.book span {
+  display: block;
+}
+.book img {
+  width: 80%;
+  padding: 50px;
+}
+
+.fa-phone-alt {
+  display: inline-block;
+  padding: 1.2rem;
+  font-size: 3rem;
+  color: rgb(255, 136, 0);
+  border: 1px solid rgb(255, 136, 0);
+  border-radius: 100%;
+  margin: 30px 0px 10px 0px;
+}
+
+.time {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 2em;
+}
+
+.footer-copyright-paragraph {
+  text-align: center;
+}
+
+.logo {
+  width: 35%;
+  color: rgb(255, 136, 0);
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+/*# sourceMappingURL=main.css.map */
