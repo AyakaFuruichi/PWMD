@@ -127,11 +127,9 @@ main {
         background-color: rgb(75, 83, 84);
         display: block;
         width: 100%;
+        overflow-x: auto;
         overflow-y: hidden;
-        overflow-x: scroll;
         white-space: nowrap;
-        
-        
     }
         
     .sideNav li {
