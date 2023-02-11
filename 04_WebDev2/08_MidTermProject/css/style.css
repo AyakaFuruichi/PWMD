@@ -1,0 +1,525 @@
+/**
+* ! for basic style
+**/
+
+body{
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    color: #273952;
+}
+
+h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+small {
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+
+section {
+    padding: 30px 30px;
+}
+
+/**
+* ! for Header( Navigation bar)
+**/
+
+#header {
+    width: 100%;
+    height: 100px;
+    background: #273952;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 70px;
+}
+
+#header img {
+    height: 80px;
+}
+
+#siteLogo {
+    padding-left: 650px;
+}
+
+/**
+* ? for cart button in header
+**/
+.openbtn1 {
+    position: relative;
+    z-index: 9999; /*ボタンを最前面に*/
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+.openbtn1 img {
+    filter: invert(88%) sepia(6%) saturate(1897%) hue-rotate(103deg)
+    brightness(116%) contrast(102%);
+    height: 40px;
+    width: 40px;
+}
+
+.cartAmount {
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    font-size: 16px;
+    background-color: red;
+    color: #fff;
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+}
+
+/**
+* ! for cart bar
+**/
+
+#g-cart {
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position: fixed;
+    z-index: 5000;
+    /*ナビのスタート位置と形状*/
+    top: 0;
+    right: -30%;
+    width: 30%;
+    height: 100vh; /*ナビの高さ*/
+    background: #273952;
+    /*動き*/
+    transition: all 0.6s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-cart.panelactive {
+    right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-cart.panelactive #g-cart-list {
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999;
+    width: 30%;
+    height: 100vh; /*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-cart ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+/*リストのレイアウト設定*/
+
+#g-cart li {
+    list-style: none;
+    text-align: center;
+}
+
+#g-cart li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+#g-cart li h2 {
+    color: #fff;
+}
+
+/**
+* ! style rules for label and some buttons
+**/
+
+.text-center {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .HomeBtn,
+  .checkout,
+  .removeAll {
+    background-color: #212529;
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .checkout {
+    background-color: #F9C846;
+  }
+  .removeAll {
+    background-color: #06BCC1;
+  }
+  .bi-x-circle {
+    color: #273952;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  /**
+  * ! style rules for shopping-cart
+  **/
+
+  .cart-main {
+    padding-top: 120px;
+  }
+  
+  .shopping-cart {
+    display: grid;
+    grid-template-columns: repeat(1, 380px);
+    justify-content: center;
+    gap: 15px;
+  }
+  
+
+
+/**
+* ! style rules for cart-item
+**/
+
+.cart-item {
+    border: 2px solid #273952;
+    border-radius: 5px;
+    display: flex;
+  }
+  
+  .title-price-x {
+    width: 195px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+  }
+  
+  .title-price {
+    /* display: flex; */
+    align-items: center;
+    /* gap: 10px; */
+  }
+  
+  .cart-item-price {
+    /* background-color: #273952; */
+    /* color: #273952; */
+    border-radius: 4px;
+    padding: 8px 6px;
+  }
+
+/**
+* ! for Slide show
+**/
+
+.top {
+    padding-top: 180px;
+}
+
+.slider {
+    /*横幅94%で左右に余白を持たせて中央寄せ*/
+    position: relative; /*絶対配置にする*/
+    width: 80%;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+.slider img {
+    /* width:60vw;スライダー内の画像を60vwにしてレスポンシブ化 */
+    height: 50vh;
+}
+
+.slider .slick-slide {
+    transform: scale(0.8); /*左右の画像のサイズを80%に*/
+    transition: all 0.5s; /*拡大や透過のアニメーションを0.5秒で行う*/
+    opacity: 0.5; /*透過50%*/
+}
+
+.slider .slick-slide.slick-center {
+    transform: scale(1); /*中央の画像のサイズだけ等倍に*/
+    opacity: 1; /*透過なし*/
+}
+
+/**
+* ? for allow in slide show
+**/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+    position: absolute; /*絶対配置にする*/
+    top: 42%;
+    cursor: pointer; /*マウスカーソルを指マークに*/
+    outline: none; /*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #666; /*矢印の色*/
+    border-right: 2px solid #666; /*矢印の色*/
+    height: 15px;
+    width: 15px;
+    z-index: 5;
+}
+
+.slick-prev {
+    /*戻る矢印の位置と形状*/
+    left: -1.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {
+    /*次へ矢印の位置と形状*/
+    right: -1.5%;
+    transform: rotate(45deg);
+}
+
+/**
+* ? for dot in slide show
+**/
+
+.slick-dots {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width: 8px; /*ドットボタンのサイズ*/
+    height: 8px; /*ドットボタンのサイズ*/
+    display: block;
+    border-radius: 50%;
+    background: #ccc; /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+    background: #333; /*ドットボタンの現在地表示の色*/
+}
+
+/**
+* ! for shop
+**/
+.shop {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+/**
+* ?for side navigation in shop
+**/
+
+.shop-nav {
+    /* background-color: pink; */
+    border-right: 2px solid #273952;
+    padding: 20px 10px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+/* ラジオボタンを非表示に */
+input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+}
+
+/* 以下はラベルのスタイル */
+.shop-nav h2 {
+    background-color: #273952;
+    border: double 5px #fff;
+    color: #fff;
+    margin: 0;
+    height: 50px;
+    padding-top: 7px;
+}
+
+.filters {
+    margin-bottom: 2rem;
+}
+
+.filters * {
+    list-style: none;
+    text-align: center;
+    display: block;
+}
+
+.filters label {
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.25rem;
+    min-width: 50px;
+    line-height: normal;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filters label:hover {
+    background: #273952;
+    color: #fff;
+}
+
+.filter_title {
+    margin: 10px 0;
+    border-top: 1px solid #273952;
+    border-bottom: 1px solid #273952;
+}
+
+[value="All"]:checked ~ .target [for="All"],
+[value="Voice"]:checked ~ .target [for="Voice"],
+[value="Goods"]:checked ~ .target [for="Goods"],
+[value="Niji"]:checked ~ .target [for="Niji"],
+[value="Holo"]:checked ~ .target [for="Holo"],
+[value="Other"]:checked ~ .target [for="Other"] {
+    background: #273952;
+    color: #fff;
+}
+
+/**
+* ? for allow in slide show
+**/
+
+.shop-main {
+    /* background-color: yellow; */
+    padding: 10px;
+  /* padding-left: 100px; */
+}
+
+.targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.target {
+  /* margin: 10px 20px; */
+    padding: 10px;
+    /* background-color: orange; */
+    width: 223px;
+    height: 400px;
+}
+.target img {
+    width: 200px;
+    height: 200px;
+}
+
+.target button {
+    width: 100px;
+    padding: 5px;
+    margin: 10px 10px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px
+}
+
+.details h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.price-quantity {
+    border-top: solid 1px #273952;
+    padding-top: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 16px;
+    align-items: center;
+}
+
+.bi-dash-lg {
+    color: #f78494;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.bi-plus-lg {
+    color: #06BCC1;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.bi-bag-check {
+    color: #273952;
+    font-size: 25px;
+    /* padding-bottom: 5px; */
+}
+
+/**
+* ! for modal screen
+**/
+
+/*infoエリアをはじめは非表示*/
+#detail_01 {
+    display: none;
+}
+
+/*モーダルの横幅を変更したい場合*/
+.modaal-container {
+    max-width: 800px;
+}
+
+/*モーダルのボタンの色を変更したい場合*/
+.modaal-close:after,
+.modaal-close:before {
+    background: #ccc;
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before {
+    background: #666;
+}
+
+button {
+    padding: 5px;
+    background-color: #b6fff9; /*temp;*/
+}
+
+/**
+* ! for footer
+**/
+#footer {
+    background: #333;
+    padding: 20px;
+}
