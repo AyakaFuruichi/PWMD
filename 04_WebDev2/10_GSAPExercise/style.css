@@ -1,0 +1,81 @@
+body {
+    padding: 10px 100px;
+}
+
+.logo {
+    display:inline;
+    font-family: Montserrat;
+    font-size: 2em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    font-family: Poppins;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+
+li a{
+    text-decoration: none;
+    color: black;
+}
+
+.content {
+    padding: 40px 200px 0 200px;
+    position: relative;
+}
+
+.tagline {
+    color: gray;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.title {
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 8em;
+    text-transform: uppercase;
+    line-height: 1.2em;
+}
+
+.beer {
+    position: absolute;
+    top:45%;
+    left: 45%;
+    transform: translate(-25%, -35%);
+}
+
+.beer img {
+    width: 350px;
+}
+
+p {
+    font-family: Poppins;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+span {
+    color: greenyellow;
+}
+
+.desc-sentence {
+    font-size: 0.6em;
+    width: 250px;
+    line-height: 1.7em;
+}
