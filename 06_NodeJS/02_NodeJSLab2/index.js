@@ -75,35 +75,10 @@ server.on("request", (req, res) => {
 
 			fs.writeFile("message.txt", message, (err) => {
 				if (err) throw err;
-				// res.statusCode = 302;
-				// res.setHeader("Location", "/");
-				// return res.end();
 			});
 		});
 	}
 
-	if (req.url === "/read-message" && req.method === "POST") {
-		req.on("end", () => {
-
-			fs.readFile("message.txt", "utf-8", (err, data) => {
-				if (err) throw err;
-				// res.statusCode = 200;
-				// res.setHeader("Content-Type", "text/html"); //MIME
-        console.log('data'+data);
-				res.write(`
-          <html>
-          <body>
-            <h1>This is Read-message Page</h1>
-            <p><a href='/'>>Back to home</a></p>
-            <p><a href='/write-message' >>To write-message</a></p>
-            <p>${data ? data : ''}</p>
-          </body>
-        </html>
-      `);
-				res.end();
-			});
-		});
-	}
 });
 
 server.listen(8000);
