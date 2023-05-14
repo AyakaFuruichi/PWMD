@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+
+<% if(members.length === 0){ %>
+  <h2>User has no members</h2>
+<% }else{ %>
+  <ul>
+      <% members.forEach(function(member){ %>
+          <li class="repo">
+              <h2><%= member.name %></h2>
+              <p><%= member.email %></p>
+          </li>
+      <% }) %>
+  </ul>
+<% } %>
+<%- include('partials/footer.ejs') %>
